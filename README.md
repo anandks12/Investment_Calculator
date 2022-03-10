@@ -1,6 +1,9 @@
 # Investment_calculator
 
-A simple web app to show your expenses
+A simple web app to show your expenses.
+It simply caculates the monthly expenses in accordance with your salary.
+Display the credit and debit of that month as well as your current month balance and annual balance if you spend the money as given.
+It shows a  3D pie chart to your monthly expenses and salary and savings.
 
 ## Team members
 1. Anand KS [https://github.com/anandks12]
@@ -10,11 +13,11 @@ A simple web app to show your expenses
  Python / 82
 
 ## Link to product walkthrough
-[link to video]
+https://www.loom.com/share/8acf7065e6b4467e94c3b7587531945a
 
 ## How it Works ?
-1. Step 1
-2. Step 2
+1. Can't host so needs a Frame work (Flask) for working
+2. run the desired command as in the video and can easily access the web application.
 
 ## Libraries used
 Python 3.9

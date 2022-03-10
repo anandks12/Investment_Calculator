@@ -1,0 +1,82 @@
+{%extends 'base.html'%}
+{%block head%}
+<meta charset="UTF-8">
+<title>Your Investments</title>
+<style>  
+    body {
+        background-image:url("https://images.unsplash.com/photo-1579546928686-286c9fbde1ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c29saWQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"); 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-size: 100% 100%;
+    }
+</style>
+<center>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'money per month'],
+          ['Salary',{{exp1.salary}}],
+          ['Savings',{{exp1.savings}}],
+          ['vehicle',{{exp1.vehicle}}],
+          ['Rent',{{exp1.rent}}],
+          ['Children',{{exp1.children}}],
+          ['Other',{{exp1.other}}]
+          ]);
+        var options = {
+          title: 'Monthly Expenses',
+          is3D: true,
+          //pieHole: 0.5
+          pieStartAngle: 100
+          /*slices: {  
+            2: {offset: 0.2},
+            3: {offset: 0.3}
+          }*/
+          /*slices: {
+            1: { color: 'transparent' }
+          }*/
+        };
+ 
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+</center>    
+<hr>
+<h1><center>Future Investments</h1>
+    <p align="right">
+        <a href='logout'>
+            <input type='submit' value='Log out'  style="height: 50px; width: 150px;color:blue;font-size : 20px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">    
+        </a>
+    </p>     
+<hr>
+{%endblock%}
+{%block body%}
+</br>
+</br>
+   
+<form action='/invest' method='POST'>
+    <center>
+        <label style="color:black;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Your Debit ( per month ) ₹ {{(exp1.debit)}}</label>
+        </br>
+        </br>
+        <label style="color:black;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Your Credit ( per month )  ₹ {{(exp1.credit)}}</label>
+        </br>
+        </br>
+        <label style="color:black;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Your Final Balance after one month will be: ₹ {{exp1.exp}}</label>
+        </br>
+        </br>
+        <label style="color:black;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Your Final Balance after one year will be: ₹ {{(12*exp1.exp)}}</label>
+        </br>
+        </br>
+    </center>    
+</form>
+<div style="margin: 10px 0 0 10px;width: 1000px">
+    <h3><center>Graph Of Your Expenses</h3>
+    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+</div>
+{%endblock%}

@@ -1,0 +1,22 @@
+ 
+{%extends 'base.html'%}
+{%block head%}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/login.css') }}">
+  <title>Log in</title>
+{%endblock%}
+{%block body%}
+<center>
+    <h1>Log in</h1>
+    <div class="oauth-box">  
+            <div id="oauth-google">
+                <a href="{{ url_for('google_login') }}">
+                <img src="{{ url_for('static', filename='/images/google-logo.png') }}" 
+                width="55px" height="55px" alt="Google logo">
+                </a>
+            </div>
+    </div>
+</center>    
+
+{%endblock%}
